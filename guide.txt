@@ -1,0 +1,40 @@
+Commands:
+pip install django -> Устанавливаем django в проект через pip
+django-admin startproject core . -> Устанавливаем ядро django в папку под названием core
+python manage.py runserver -> Запускаем на нашем компьютере небольшой сервер(CTRL + C чтобы остановить)
+python manage.py startapp main_app -> Создаем приложение с именем main_app
+#### Всегда при создании нового application нужно его прописать в core/settings.py -> INSTALLED_APPS
+
+python manage.py makemigrations -> Создать файл для миграции моделей в базу данных
+python manage.py migrate -> Провести миграцию(Перенести модели в sql таблицы)
+
+python manage.py createsuperuser -> Зарегистрировать суперюзера(Админ со всеми правами доступа)
+
+Description(Core):
+manage.py -> Файл django, который отвечает за выполнение команд в проекте
+wsgi.py -> Файл django, который отвечает за веб запросы(Web Service Gateway Interface)
+asgi.py -> Файл django, который отвечает за асинхронные запросы(Asynchronous Service Gateway Interface)
+db.sqlite3 -> База данных(sqlite3 только для разработки)
+
+urls.py -> Файл django, который отвечает за маршрутизацию внутри проекта
+settings.py -> Файл django, который отвечает за настройку проекта
+
+Description(Application):
+models.py -> Файл приложения, который отвечает за таблицы в SQL
+
+
+#### Как настроить template:
+1) Создать папку(например templates) для темплейтов внутри папку проекта
+2) В core/settings.py в листе TEMPLATES, в лист 'DIRS' добавить "BASE_DIR / 'templates'"
+3) Создавать html темплейты только в этой папке
+
+
+#### Для использования картинок нужна библиотека pillow(pip install pillow)
+#### Как настроить media:
+1) Создать папку для медиа
+2) В core/setting.py настроить MEDIA_ROOT(Маршрут в папку), MEDIA_URL(Маршрут к серверу)
+3) В core/urls.py добавить маршрут к медиа:
+    from django.conf.urls.static import static
+    from django.conf import settings
+
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
