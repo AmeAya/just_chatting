@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div align="center">
+        <div style="width: 40vw; border: 1px solid black" align="left">
+
+            <form action="" method="post">
+                <h1 align="center">Login:</h1>
+                {% if message %}
+                    <p align="center" style="color: red">
+                        {{ message }}
+                    </p>
+                {% endif %}
+
+                {% csrf_token %}
+
+                <label>Email:</label>
+                <input type="email" name="email" required>
+                <br><br>
+
+                <label>Password:</label>
+                <input type="password" name="password" required>
+                <br><br>
+
+                <input type="submit" value="Log In">
+            </form>
+        </div>
+    </div>
+{% endblock %}
