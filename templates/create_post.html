@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="" method="post"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label>Title</label>
+        <input type="text" name="post_title" required>
+        <br><br>
+
+        <label>Text</label>
+        <textarea name="post_text" required></textarea>
+        <br><br>
+
+        <label>Image</label>
+        <input type="file" name="post_image"
+            accept="image/png, image/jpeg">
+        <br><br>
+
+        <input type="submit" value="Post">
+    </form>
+{% endblock %}
